@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Django settings for todo_maniak project.
 
@@ -11,6 +12,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+from django.core.urlresolvers import reverse_lazy
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +27,7 @@ SECRET_KEY = '*g4or8vri*6k@rwn8^swb(=y=13jn8y)_ggk*$a%=0n3e!uis!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'seeds',
+    'staff'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -52,10 +56,12 @@ MIDDLEWARE_CLASSES = [
 
 ROOT_URLCONF = 'todo_maniak.urls'
 
+TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATE_PATH],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,11 +82,21 @@ WSGI_APPLICATION = 'todo_maniak.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'todo_maniak',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',
+        'PORT': '3306',
+        'OPTIONS': {
+           "init_command": "SET storage_engine=INNODB",
+        }
     }
 }
 
+FIXTURE_PATH = os.path.join(BASE_DIR, 'fixtures')
+
+FIXTURE_DIRS = (FIXTURE_PATH,)
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -104,9 +120,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-mx'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Mexico_City'
 
 USE_I18N = True
 
@@ -117,5 +133,26 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
+STATIC_URL = '/assets/'
+MEDIA_URL = '/media/'
+INVOICE_URL = '/invoices/'
 
-STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(TEMPLATE_PATH, "assets"),
+)
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+)
+
+# Global Variables
+SITE_ID = 1
+
+LOGIN_URL = reverse_lazy('staff_login')
+LOGIN_REDIRECT_URL = reverse_lazy('todo_list')
+
+TODO_STATUSES = (('New', 'New'),
+                 ('Doing', 'Doing'),
+                 ('Staging', 'Staging'),
+                 ('Done', 'Done'))

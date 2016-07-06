@@ -1,0 +1,57 @@
+{# Base #}
+{% extends "layout.html" %}
+
+{% block content %}
+    {% load staticfiles %}
+{% load staticfiles %}
+    <div class="login-box">
+
+    <div class="login-box-body">
+        <h4 class="example-title">Signup staff</h4>
+        <form action="?" method="post" enctype="multipart/form-data" class="panel-body container-fluid">
+            {% csrf_token %}
+            {% if form %}
+                {% if message_error or message_success %}
+                    <!-- Form alert -->
+                    <div class="alert dark alert-alt {% if message_error %}alert-danger{% elif message_success %} alert-success {% endif %}
+                     alert-dismissible" role="alert">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                        {% if message_error %}
+                            {{message_error}}
+                        {% elif message_success %}
+                            {{message_success}}
+                        {% endif %}
+                    </div>
+                    <!-- End form alert -->
+                {% endif %}
+                {% for field in form %}
+
+                    <div class="form-group {% if field.errors %} has-error {% endif %}">
+                        <label >
+                            {{ field.label }}
+                            {% if field.field.required %}
+                                <span>*</span>
+                            {% endif %}
+                        </label>
+                        {{ field }}
+                        {% if field.errors %}
+                            <label class="control-label" for="inputError">
+                                {% for error in field.errors %} {{error}} {%endfor%}
+                            </label>
+                        {% endif %}
+                    </div>
+
+                {% endfor %}
+            {% endif %}
+
+            <div class="form-group submit-form">
+                <button type="submit" class="btn btn-primary btn-block">Signup</button>
+                <a href="{% url 'staff_login' %}" class="btn btn-primary btn-block">Login</a>
+            </div>
+
+        </form>
+    </div>
+</div>
+{% endblock %}

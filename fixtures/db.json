@@ -1,0 +1,344 @@
+[
+{
+  "model": "auth.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$24000$CkCTpkG3EC43$Ov6sfXO1+vjlD1YcSGzU2x3dqr1E7OtUNpp7DKttdso=",
+    "last_login": "2016-07-06T03:16:50.931Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2016-07-05T10:51:37.845Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 7,
+  "fields": {
+    "password": "pass123",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "user",
+    "first_name": "mago",
+    "last_name": "mago",
+    "email": "mail@mail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2016-07-05T11:02:10.960Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 8,
+  "fields": {
+    "password": "123iop",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "user2",
+    "first_name": "mago",
+    "last_name": "mago",
+    "email": "mail@mail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2016-07-05T11:03:09.800Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 9,
+  "fields": {
+    "password": "pbkdf2_sha256$24000$vrBq048fJNRl$ZVorEzLifmtPWgLvh2FGaq1IvDb/EvfTZ39DJYLOJ6s=",
+    "last_login": "2016-07-05T11:05:21.653Z",
+    "is_superuser": false,
+    "username": "user3",
+    "first_name": "mago",
+    "last_name": "mago",
+    "email": "mail@mail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2016-07-05T11:05:21.222Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 10,
+  "fields": {
+    "password": "pbkdf2_sha256$24000$kOEGMinoj3te$PZhr5/4FxDJp/yRZ4get9K6HUQfECIzTov+C06wIiZo=",
+    "last_login": "2016-07-05T11:19:30.760Z",
+    "is_superuser": false,
+    "username": "user4",
+    "first_name": "a",
+    "last_name": "a",
+    "email": "mail@mail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2016-07-05T11:11:38.383Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 11,
+  "fields": {
+    "password": "pbkdf2_sha256$24000$6ufNt6Ac4Znq$E+LqOx4QYSjUXOvrp3FxHoNwMQdN32Lgbht4557ym4c=",
+    "last_login": "2016-07-05T11:45:59.581Z",
+    "is_superuser": false,
+    "username": "ss",
+    "first_name": "ss",
+    "last_name": "ss",
+    "email": "alandavalos1985@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2016-07-05T11:45:59.166Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 12,
+  "fields": {
+    "password": "pbkdf2_sha256$24000$haqStMTWHAzt$SrFShtBx64VQlDa+eeluY8k8UY1WdfrMAZfTyjVhPC4=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "userTT",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2016-07-06T02:10:49.126Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 13,
+  "fields": {
+    "password": "pbkdf2_sha256$24000$371b2uDz0m6Z$Ys28YzEVQkOgQpHvSgUbdx1iMCDATcI5ho6vrmlAAJk=",
+    "last_login": "2016-07-06T03:18:17.397Z",
+    "is_superuser": false,
+    "username": "Karla",
+    "first_name": "Karla",
+    "last_name": "Ramos",
+    "email": "ramos@mail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2016-07-06T03:18:16.950Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "2e1utuxo9mzwl0fjkmjikjng7r34540b",
+  "fields": {
+    "session_data": "NGFhZWY5YzU2NWYzMThlMDAyNGUwZDFjNDRmZTAwY2YxYmQyOGJjMTp7Il9hdXRoX3VzZXJfaGFzaCI6IjI0MGNhYWFhNzdhNzM4MDg3ZGViNTNkZDhkYzY5Y2VhZjBmZmIyMzYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiI1In0=",
+    "expire_date": "2016-07-19T11:04:18.652Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "mekg42mksmqksccre3gyzovuv8yo1egl",
+  "fields": {
+    "session_data": "ZWE4YTVkNzhkNmEwMmU3ZTUwMTI5MWRlOTUzYWI0MTY1NGM0NDRlYzp7Il9hdXRoX3VzZXJfaGFzaCI6ImRjOTNhYTRlMDY2OGNiYjk3MzA3MDZkYzAxMGFiODY5ZGYxZjU5YjMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxMyJ9",
+    "expire_date": "2016-07-20T03:18:17.402Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "tah0e2kola60m4m6oaueb9enihi98w7t",
+  "fields": {
+    "session_data": "NGFhZWY5YzU2NWYzMThlMDAyNGUwZDFjNDRmZTAwY2YxYmQyOGJjMTp7Il9hdXRoX3VzZXJfaGFzaCI6IjI0MGNhYWFhNzdhNzM4MDg3ZGViNTNkZDhkYzY5Y2VhZjBmZmIyMzYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiI1In0=",
+    "expire_date": "2016-07-20T01:06:07.641Z"
+  }
+},
+{
+  "model": "seeds.todo",
+  "pk": 1,
+  "fields": {
+    "name": "Todo1",
+    "slug": "todo1",
+    "assigned": 7,
+    "creation_date": "2016-07-06T01:06:17.966Z",
+    "status": "Done"
+  }
+},
+{
+  "model": "seeds.todo",
+  "pk": 2,
+  "fields": {
+    "name": "Todo 2",
+    "slug": "todo-2",
+    "assigned": 11,
+    "creation_date": "2016-07-06T01:06:24.111Z",
+    "status": "Done"
+  }
+},
+{
+  "model": "seeds.todo",
+  "pk": 3,
+  "fields": {
+    "name": "asd",
+    "slug": "asd",
+    "assigned": null,
+    "creation_date": "2016-07-06T05:03:52.846Z",
+    "status": "new"
+  }
+},
+{
+  "model": "seeds.todo",
+  "pk": 4,
+  "fields": {
+    "name": "asdasd",
+    "slug": "asdasd",
+    "assigned": null,
+    "creation_date": "2016-07-06T05:09:02.875Z",
+    "status": "new"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2016-07-05T11:01:34.172Z",
+    "user": 5,
+    "content_type": 4,
+    "object_id": "1",
+    "object_repr": "chicho",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2016-07-05T11:01:34.255Z",
+    "user": 5,
+    "content_type": 4,
+    "object_id": "4",
+    "object_repr": "coffe",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2016-07-05T11:01:34.296Z",
+    "user": 5,
+    "content_type": 4,
+    "object_id": "2",
+    "object_repr": "daniela",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2016-07-05T11:01:34.300Z",
+    "user": 5,
+    "content_type": 4,
+    "object_id": "6",
+    "object_repr": "qwert",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2016-07-05T11:01:34.304Z",
+    "user": 5,
+    "content_type": 4,
+    "object_id": "3",
+    "object_repr": "ss",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2016-07-05T11:16:23.847Z",
+    "user": 5,
+    "content_type": 4,
+    "object_id": "10",
+    "object_repr": "user4",
+    "action_flag": 2,
+    "change_message": "Modifica password."
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2016-07-05T11:19:23.364Z",
+    "user": 5,
+    "content_type": 4,
+    "object_id": "10",
+    "object_repr": "user4",
+    "action_flag": 2,
+    "change_message": "Modifica password."
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2016-07-06T01:06:17.967Z",
+    "user": 5,
+    "content_type": 7,
+    "object_id": "1",
+    "object_repr": "Todo1",
+    "action_flag": 1,
+    "change_message": "Added."
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2016-07-06T01:06:24.112Z",
+    "user": 5,
+    "content_type": 7,
+    "object_id": "2",
+    "object_repr": "Todo 2",
+    "action_flag": 1,
+    "change_message": "Added."
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2016-07-06T02:10:49.373Z",
+    "user": 5,
+    "content_type": 4,
+    "object_id": "12",
+    "object_repr": "userTT",
+    "action_flag": 1,
+    "change_message": "Added."
+  }
+}
+]

@@ -1,0 +1,71 @@
+{# Base #}
+{% extends "layout.html" %}
+
+{% block content %}
+<!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            ToDo Detail
+            <small>{{item.name}}</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="{% url "todo_list" %}"><i class="fa fa-dashboard"></i> Inicio</a></li>
+          </ol>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="box box-widget widget-user-2">
+                        <!-- Add the bg color to the header using any of the bg-* classes -->
+                        <div class="widget-user-header bg-yellow">
+                          <!-- /.widget-user-image -->
+                          <h3 class="widget-user-username">{{item.name}}</h3>
+                          <h5 class="widget-user-desc">
+                              {% if item.assigned %}
+                                {{item.assigned.first_name}} {{item.assigned.last_name}}
+                              {% else %}
+                              <form action="{% url 'todo_assign' todo_id=item.id %}" method="post">
+                                  {% csrf_token %}
+                                <select class="form-control" name="assign_to" id="assign_to">
+                                      <option value="0"> Select One User</option>
+                                      {% for user in users_list %}
+                                        <option value="{{user.id}}">{{user.first_name}} {{user.last_name}}</option>
+                                      {% endfor%}
+                                </select>
+                                <button class="btn btn-primary btn-block">Assign</button>
+                              </form>
+                              {% endif %}
+                          </h5>
+                        </div>
+                        <div class="box-footer no-padding">
+                          <ul class="nav nav-stacked">
+                            <li>
+                                <a href="#">
+                                    Status
+                                    {% if item.status = 'New' %}
+                                        <span class="pull-right badge bg-blue">{{item.status}}</span>
+                                    {% elif item.status = 'Done' %}
+                                        <span class="pull-right badge bg-green">{{item.status}}</span>
+                                    {% else %}
+                                        <span class="pull-right badge bg-yellow">{{item.status}}</span>
+                                    {% endif %}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Creation Date
+                                    <span class="pull-right badge bg-aqua">{{item.creation_date}}</span>
+                                </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

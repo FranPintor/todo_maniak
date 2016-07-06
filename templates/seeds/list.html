@@ -1,0 +1,161 @@
+{# Base #}
+{% extends "layout.html" %}
+
+{% block content %}
+<!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            ToDo List
+            <small>{{month|date:'F'}}</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="{% url "todo_list" %}"><i class="fa fa-dashboard"></i> Inicio</a></li>
+          </ol>
+        </section>
+        <a href="{% url 'todo_create' %}" class="btn btn-primary">Create New ToDo</a>
+        <section class="content">
+            <div class="box-body table-responsive no-padding">
+                <table class="table no-margin">
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Assigned</th>
+                        <th>Status</th>
+                        <th>Creation Date</th>
+                        <th>Actions</th>
+                    </tr>
+                    {% if items.count > 0 %}
+                        {% for item in items %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td><a href="{% url 'todo_detail' slug=item.slug %}">{{item.name}}</a></td>
+                            <td>
+                                {% if item.assigned %}
+                                    {{item.assigned.first_name}} {{item.assigned.last_name}}
+                                {% else %}
+                                    Not Assigned Yet
+                                {% endif %}
+                            </td>
+                            <td>{{item.status}}</td>
+                            <td>{{item.creation_date}}</td>
+                            <td>
+                                {% if item.status != 'Done' %}
+                                    <a href="#" onclick="change_status({{item.id}})" class="btn btn-success">Mark As Completed</a>
+                                {% else %}
+                                    <span class="label bg-green">DONE</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="6">Nothing Found</td>
+                        </tr>
+                    {% endif %}
+                </table>
+            </div>
+        </section>
+    </div>
+    <!-- MODALS -->
+        <div class="modal modal-primary" id="modalMarkDone">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <h4 class="modal-title">Mark As Done</h4>
+          </div>
+          <div class="modal-body">
+            <p class="text-center">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">No</button>
+                <button class="btn btn-primary" id="confirm-status">Yes</button>
+                <form action="" id="form-update-status" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" id="srv_url" value="{% url 'todo_completed' %}">
+                    <input type="hidden" name="todo_id" value="" id="val_todo">
+                </form>
+            </p>
+
+          </div>
+          <div class="modal-footer">
+              <p>© ToDo Maniak</p>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="modal modal-primary" id="modalProcessMarkDone">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <p class="text-center">Processing .... </p>
+          </div>
+          <div class="modal-footer">
+              <p>© ToDo Maniak</p>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <script>
+      // Get the form.
+      var form = $('#form-update-status');
+
+      function change_status(id){
+            $('#val_todo').val(id);
+            $('#modalMarkDone').modal({'show': true, backdrop: 'static',});
+        }
+
+        $("#confirm-status").click(function(){
+        form = $('#form-update-status');
+        //debugger;
+        $('#modalmodalMarkDone').modal('hide');
+        $('#modalProcessMarkDone').modal({'show': true, backdrop: 'static',});
+        $(form).submit();
+      });
+
+      // Set up an event listener for the contact form.
+      $(form).submit(function(event) {
+          // Stop the browser from submitting the form.
+          event.preventDefault();
+
+          // Serialize the form data.
+          var formData = $(form).serialize();
+          $("#confirm-status").attr("disabled", true);
+          $('#modalmodalMarkDone').modal('hide');
+          $('#modalProcessMarkDone').modal({'show': true, backdrop: 'static',});
+          var srv_url = $('#srv_url').val()
+          //debugger;
+          $.ajax({
+              type: 'POST',
+              data: formData,
+              url: srv_url,
+              dataType:'json',
+              success: function(response) {
+                  //debugger;
+                  $("#confirm-status").attr("disabled", false);
+                  $('#modalProcessMarkDone').modal('hide');
+                  $('#form-messages').removeClass('alert alert-danger');
+                  $('#form-messages').addClass('alert alert-success');
+                  $('#form-messages').text('ToDo Mark As Completed');
+                  location.reload();
+              },
+              error: function(data) {
+                  $("#confirm-charge").attr("disabled", false);
+                  $('#modalProcessMarkDone').modal('hide');
+                  // Make sure that the formMessages div has the 'error' class.
+                  $('#form-messages').removeClass('alert alert-success');
+                  $('#form-messages').addClass('alert alert-danger alert-dismissible');
+                  debugger;
+                  // Set the message text.
+                  if (data.responseText !== '') {
+                      $('#form-messages').text(data.responseText);
+                  } else {
+                      $('#form-messages').text('Oops! Something Is Not Working Well');
+                  }
+              }
+          })
+
+      });
+    </script>
+{% endblock %}
