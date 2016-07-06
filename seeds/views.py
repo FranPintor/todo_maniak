@@ -1,15 +1,20 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required, permission_required
 from django.http import JsonResponse
 from django.contrib.auth.models import User
+from django.conf import settings
 from .models import ToDo
 from .forms import ToDoForm
 #import pdb; pdb.set_trace()
 
 
+@login_required(login_url=settings.LOGIN_URL)
 def todo_list(request):
     context = {'items': ToDo.objects.all()}
     return render(request, 'seeds/list.html', context)
 
+
+@login_required(login_url=settings.LOGIN_URL)
 def todo_create(request):
     context = {'form': ToDoForm(request.POST or None)}
     if request.POST:
@@ -20,18 +25,22 @@ def todo_create(request):
 
     return render(request, 'seeds/create.html', context)
 
+
+@login_required(login_url=settings.LOGIN_URL)
 def todo_detail(request, slug):
     context = {'item': get_object_or_404(ToDo, slug=slug),
                'users_list': User.objects.all().exclude(is_staff=True, is_superuser=True)}
     return render(request, 'seeds/detail.html', context)
 
 
+@login_required(login_url=settings.LOGIN_URL)
 def todo_delete(request, slug):
     item = get_object_or_404(ToDo, slug=slug)
     item.delete()
     return redirect('todo_list')
 
 
+@login_required(login_url=settings.LOGIN_URL)
 def todo_assign(request, todo_id):
     item = get_object_or_404(ToDo, id=todo_id)
     if request.POST:
@@ -44,6 +53,7 @@ def todo_assign(request, todo_id):
     return redirect('todo_detail', slug=item.slug)
 
 
+@login_required(login_url=settings.LOGIN_URL)
 def todo_completed(request):
     if request.is_ajax() and request.POST:
         try:
