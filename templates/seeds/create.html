@@ -60,8 +60,7 @@
             {% endif %}
 
             <div class="form-group submit-form">
-                <button type="submit" class="btn btn-primary btn-block">Login</button>
-                <a href="{% url 'staff_signup' %}" class="btn btn-primary btn-block">Signup</a>
+                <button type="submit" class="btn btn-primary btn-block">Create ToDo</button>
             </div>
 
         </form>
@@ -69,4 +68,11 @@
         </section>
     </div>
 </div>
+    {% block page_js %}
+    {% load staticfiles %}
+        <script src="{% static "js/jquery.slugify.js"%}"></script>
+    {% endblock %}
+    <script>
+        $('.slug').slugify('#todo_name');
+    </script>
 {% endblock %}
