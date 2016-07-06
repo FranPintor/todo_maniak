@@ -1,0 +1,72 @@
+{# Base #}
+{% extends "layout.html" %}
+
+{% block page_css %}
+{% endblock%}
+
+{% block content %}
+    {% load staticfiles %}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            ToDo Detail
+            <small>{{item.name}}</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="{% url "todo_list" %}"><i class="fa fa-dashboard"></i> Inicio</a></li>
+          </ol>
+        </section>
+        <section class="content">
+            <div class="row">
+
+                <h3 >Create ToDo</h3>
+                <form action="?" method="post">
+            {% csrf_token %}
+            {% if form %}
+                {% if message_errors or message_success %}
+                    <!-- Form alert -->
+                    <div class="alert dark alert-alt {% if message_error %}alert-danger{% elif message_success %} alert-success {% endif %}
+                     alert-dismissible" role="alert">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                        {% if message_errors %}
+                            {{message_errors}}
+                        {% elif message_success %}
+                            {{message_success}}
+                        {% endif %}
+                    </div>
+                    <!-- End form alert -->
+                {% endif %}
+                {% for field in form %}
+
+                    <div class="form-group {% if field.errors %} has-error {% endif %}">
+                        <label >
+                            {{ field.label }}
+                            {% if field.field.required %}
+                                <span>*</span>
+                            {% endif %}
+                        </label>
+                        {{ field }}
+                        {% if field.errors %}
+                            <label class="control-label" for="inputError">
+                                {% for error in field.errors %} {{error}} {%endfor%}
+                            </label>
+                        {% endif %}
+                    </div>
+
+                {% endfor %}
+            {% endif %}
+
+            <div class="form-group submit-form">
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+                <a href="{% url 'staff_signup' %}" class="btn btn-primary btn-block">Signup</a>
+            </div>
+
+        </form>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}
