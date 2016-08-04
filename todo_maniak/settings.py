@@ -85,11 +85,11 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'todo_maniak',
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '3306',
         'OPTIONS': {
-           "init_command": "SET storage_engine=INNODB",
+           "init_command": "SET default_storage_engine=INNODB",
         }
     }
 }
